@@ -7,8 +7,10 @@ import Modal from "./Model";
 import CheckBox from "./CheckBox";
 
 import { useGSAP } from "@gsap/react";
-import gsap from "https://esm.sh/gsap";
 import Button from "./Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import gsap from "gsap";
 
 function TodoItem({ todo }) {
   const dispatch = useDispatch();
@@ -78,13 +80,13 @@ function TodoItem({ todo }) {
         </div>
         <div className="flex gap-3 my-auto mx-auto sm:mx-0 h-fit">
           <Button
-            text={"Update"}
+            text={<FontAwesomeIcon icon={faPenToSquare} />}
             bg="bg-green-500 hover:bg-green-500/75"
             onClick={handleUpdate}
             onKeyDown={handleUpdate}
           />
           <Button
-            text={"Delete"}
+            text={<FontAwesomeIcon icon={faTrashCan} />}
             bg="bg-red-500 hover:bg-red-500/75"
             onClick={handleDelete}
             onKeyDown={handleDelete}
