@@ -6,7 +6,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 function Calculator() {
   const [theme, setTheme] = useState(
@@ -16,13 +15,9 @@ function Calculator() {
   );
 
   useEffect(() => {
-    if (theme === "true") {
+    if (theme === "true")
       document.getElementById("theme").classList.add("dark");
-      console.log(theme, "darkkkkkkkkkkk");
-    } else {
-      document.getElementById("theme").classList.remove("dark");
-      console.log(theme, "ASfaf");
-    }
+    else document.getElementById("theme").classList.remove("dark");
   }, [theme]);
 
   const btn = [
@@ -34,10 +29,6 @@ function Calculator() {
   ];
 
   const handleTheme = () => {
-    // if (theme) document.getElementById("theme").classList.remove("dark");
-    // else document.getElementById("theme").classList.add("dark");
-
-    console.log(theme);
     localStorage.setItem(
       "calculatortheme",
       theme === "true" ? "false" : "true"
