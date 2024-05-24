@@ -5,7 +5,6 @@ export const CalContext = createContext();
 function CalProvider({ children }) {
   const [cal, setCal] = useState({
     num: "0",
-    res: "0",
   });
 
   const providerValue = { cal, setCal };

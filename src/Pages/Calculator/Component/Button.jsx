@@ -27,9 +27,10 @@ function Button({ value, keys }) {
 
   //   user Click Back
   const backClick = () => {
+    var cb = cal.num.split("").slice(0, -1).join("");
     setCal({
       ...cal,
-      num: cal.num.split("").slice(0, -1).join(""),
+      num: cb === "" ? "0" : cb,
     });
   };
 
@@ -83,7 +84,7 @@ function Button({ value, keys }) {
     <>
       <div
         onClick={handleClick}
-        className={`p-5 text-center cursor-pointer rounded-3xl font-bold shadow-lg shadow-gray-600 text-xl active:shadow-inner transition-all
+        className={`p-5 text-center cursor-pointer rounded-3xl font-bold shadow-sm shadow-gray-600 text-xl active:shadow-inner transition-all dark:text-white dark:shadow-white
          ${keys === 17 || keys === 0 ? "col-span-2" : ""} ${getStyleName(
           value
         )}`}
