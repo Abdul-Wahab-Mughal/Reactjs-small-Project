@@ -43,7 +43,10 @@ function Button({ value, keys }) {
   const handleClickBtn = () => {
     setCal({
       ...cal,
-      num: cal.num === "0" ? value.toString() : cal.num + value.toString(),
+      num:
+        cal.num === "0" || cal.num === "NaN" || cal.num === "Infinity"
+          ? value.toString()
+          : cal.num + value.toString(),
     });
   };
 
