@@ -16,14 +16,14 @@ function Clock() {
   return (
     <>
       <div className="theme">
-        <div className="bg-white dark:bg-gray-800 h-full duration-500">
+        <div className="bg-white dark:bg-gray-800 flex flex-col min-h-screen duration-500">
           <div className="flex flex-col sm:flex-row sm:gap-10 items-center gap-0 mb-5 w-fit m-auto">
             <Header name={"Clock"} />
             <Theme />
           </div>
           {/* Analog Clock */}
-          <div className="min-h-[55em] h-screen flex flex-col justify-center items-center overflow-hidden">
-            <div className="analogclock w-[30em] h-[30em] sm:w-[40em] sm:h-[40em] flex justify-center border-4 rounded-full shadow-2xl relative dark:shadow-white">
+          <div className="min-h-[410px] h-full flex flex-col flex-grow justify-center items-center overflow-hidden">
+            <div className="analogclock min-w-[30em] min-h-[30em] sm:w-[35vw] sm:h-[35vw] flex justify-center border-4 rounded-full shadow-2xl relative dark:shadow-white">
               <Number num={"12"} numclass={"twelve"} />
               <Number num={"1"} numclass={"one"} />
               <Number num={"2"} numclass={"two"} />
@@ -58,20 +58,20 @@ function Clock() {
               </div>
             </div>
             {/* Digital Clock */}
-            <div className="flex flex-row sm:gap-5 text-[6em] dark:text-white mt-10">
-              <span className="border-4 rounded-[3rem] w-[1.5em] h-[1.5em] flex justify-center items-center shadow-lg dark:shadow-white">
+            <div className="flex flex-row sm:gap-5 text-[3em] sm:text-[6vw] dark:text-white my-5">
+              <span className="border-4 rounded-[3rem] w-[1.5em] h-[1.5em] flex justify-center items-center shadow-lg dark:shadow-white p-7">
                 {time.getHours() % 12 < 10
                   ? "0" + (time.getHours() % 12)
                   : time.getHours() % 12}
               </span>
-              <span style={{ lineHeight: "1.25" }}>:</span>
-              <span className="border-4 rounded-[3rem] w-[1.5em] h-[1.5em] flex justify-center items-center shadow-lg dark:shadow-white">
+              <span style={{ lineHeight: "1.25" }} className="py-2">:</span>
+              <span className="border-4 rounded-[3rem] w-[1.5em] h-[1.5em] flex justify-center items-center shadow-lg dark:shadow-white p-7">
                 {time.getMinutes() < 10
                   ? "0" + time.getMinutes()
                   : time.getMinutes()}
               </span>
-              <span style={{ lineHeight: "1.25" }}>:</span>
-              <span className="border-4 rounded-[3rem] w-[1.5em] h-[1.5em] flex justify-center items-center shadow-lg dark:shadow-white">
+              <span style={{ lineHeight: "1.25" }} className="py-2">:</span>
+              <span className="border-4 rounded-[3rem] w-[1.5em] h-[1.5em] flex justify-center items-center shadow-lg dark:shadow-white p-7">
                 {time.getSeconds() < 10
                   ? "0" + time.getSeconds()
                   : time.getSeconds()}
