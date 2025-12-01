@@ -1,25 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import Button from "./Component/Button";
 import Screen from "./Component/Screen";
 import CalProvider from "./CalContext";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
+import Header from "../../Component/Header";
+import Theme from "../../Component/Theme";
 
 function Calculator() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("calculatortheme")
-      ? localStorage.getItem("calculatortheme")
-      : "false"
-  );
-
-  useEffect(() => {
-    if (theme === "true")
-      document.getElementById("theme").classList.add("dark");
-    else document.getElementById("theme").classList.remove("dark");
-  }, [theme]);
-
   const btn = [
     ["AC", "DE", "/"],
     [7, 8, 9, "*"],
@@ -27,14 +15,6 @@ function Calculator() {
     [1, 2, 3, "+"],
     [0, ".", "="],
   ];
-
-  const handleTheme = () => {
-    localStorage.setItem(
-      "calculatortheme",
-      theme === "true" ? "false" : "true"
-    );
-    setTheme(theme === "true" ? "false" : "true");
-  };
 
   const container = useRef();
 
@@ -55,29 +35,20 @@ function Calculator() {
 
   return (
     <>
-      <div id="theme">
+      <div className="theme">
         <div
           ref={container}
-          className="w-full min-h-screen bg-gray-100 dark:bg-gray-800"
+          className="w-full h-screen flex flex-col bg-gray-100 dark:bg-gray-800 pb-5"
         >
-          <div className="mx-auto max-w-screen-sm px-0 sm:px-32 pb-5 relative">
-            <header className="todo p-0 m-0 py-10 text-center uppercase font-bold text-5xl dark:text-white">
-              <h1>calculator</h1>
-            </header>
-            <button
-              onClick={handleTheme}
-              className="absolute top-24 end-0 border-2 border-black px-5 rounded-full m-1 mx-32 dark:border-white dark:text-white"
-            >
-              {theme === "true" ? (
-                <FontAwesomeIcon icon={faMoon} />
-              ) : (
-                <FontAwesomeIcon icon={faSun} />
-              )}
-            </button>
+          <div className="flex flex-col sm:flex-row sm:gap-10 items-center gap-0 mb-5 w-fit m-auto">
+            <Header name={"Calculator"} />
+            <Theme />
+          </div>
 
+          <div className="h-screen flex flex-grow justify-center items-center min min-h-[550px]">
             <CalProvider>
               <section className="allset p-5 border-2 shadow-lg rounded-3xl dark:shadow-white">
-                <Screen />
+                <Screen key={""} />
 
                 <div className="grid grid-cols-4 gap-4">
                   {btn.flat().map((btn, i) => (

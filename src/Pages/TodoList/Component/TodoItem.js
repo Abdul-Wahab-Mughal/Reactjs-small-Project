@@ -70,12 +70,12 @@ function TodoItem({ todo }) {
           />
           <div>
             <p
-              className={`font-bold capitalize  
+              className={`font-bold capitalize dark:text-white 
             ${todo.status === "complete" ? "line-through text-gray-500" : ""}`}
             >
               {todo.title}
             </p>
-            <p>{todo.time}</p>
+            <p className="dark:text-white">{todo.time}</p>
           </div>
         </div>
         <div className="flex gap-3 my-auto mx-auto sm:mx-0 h-fit">

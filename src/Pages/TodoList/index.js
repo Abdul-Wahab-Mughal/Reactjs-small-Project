@@ -11,6 +11,8 @@ import Button from "./Component/Button";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "https://esm.sh/gsap";
+import Header from "../../Component/Header";
+import Theme from "../../Component/Theme";
 
 export default function TodoList() {
   const [model, setmodel] = useState(false);
@@ -52,55 +54,58 @@ export default function TodoList() {
 
   return (
     <>
-      <div className="bg-gray-100 h-screen w-full">
-        <div
-          ref={container}
-          className="mx-auto overflow-hidden max-w-screen-md"
-        >
-          <header className="todo p-0 m-0 py-10 text-center uppercase font-bold text-5xl">
-            <h1>Todo List</h1>
-          </header>
-          <div className="flex justify-between m-5">
-            <Button
-              cn="allset"
-              onClick={() => setmodel(true)}
-              text={"Add Task"}
+      <div className="theme">
+        <div className="bg-gray-100 h-screen w-full dark:bg-gray-800">
+          <div
+            ref={container}
+            className="mx-auto overflow-hidden max-w-screen-md"
+          >
+            <div className="flex flex-col sm:flex-row sm:gap-10 items-center gap-0 mb-5 w-fit m-auto">
+              <Header name={"Todo List"} />
+              <Theme />
+            </div>
+            <div className="flex justify-between m-5">
+              <Button
+                cn="allset"
+                onClick={() => setmodel(true)}
+                text={"Add Task"}
+              />
+              <select
+                className="allset bg-gray-200 px-5 rounded-xl"
+                value={filterstatus}
+                onChange={updatefilter}
+              >
+                <option value="all">All</option>
+                <option value="incomplete">incomplete</option>
+                <option value="complete">complete</option>
+              </select>
+            </div>
+            {/*  */}
+            {/*  */}
+
+            {/* Display List */}
+            <section className="m-5">
+              {filtertodo && filtertodo.length > 0 ? (
+                filtertodo.map((todo) => (
+                  <TodoItem itemshow="itemshow" key={todo.id} todo={todo} />
+                ))
+              ) : (
+                <p className="text-black dark:text-white">No todo Found</p>
+              )}
+            </section>
+
+            <Model model={model} setmodel={setmodel} />
+
+            <Toaster
+              position="bottom-center"
+              toastOptions={{
+                style: {
+                  fontSize: "1.5em",
+                  whiteSpace: "nowrap",
+                },
+              }}
             />
-            <select
-              className="allset bg-gray-200 px-5 rounded-xl"
-              value={filterstatus}
-              onChange={updatefilter}
-            >
-              <option value="all">All</option>
-              <option value="incomplete">incomplete</option>
-              <option value="complete">complete</option>
-            </select>
           </div>
-          {/*  */}
-          {/*  */}
-
-          {/* Display List */}
-          <section className="m-5">
-            {filtertodo && filtertodo.length > 0 ? (
-              filtertodo.map((todo) => (
-                <TodoItem itemshow="itemshow" key={todo.id} todo={todo} />
-              ))
-            ) : (
-              <p>No todo Found</p>
-            )}
-          </section>
-
-          <Model model={model} setmodel={setmodel} />
-
-          <Toaster
-            position="bottom-center"
-            toastOptions={{
-              style: {
-                fontSize: "1.5em",
-                whiteSpace: "nowrap",
-              },
-            }}
-          />
         </div>
       </div>
     </>
