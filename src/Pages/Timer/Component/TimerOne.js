@@ -1,6 +1,6 @@
 import React from "react";
 
-function Timer_1({ hours, minutes, second }) {
+function TimerOne({ hours, minutes, second }) {
   return (
     <>
       <div className="text-3xl dark:text-white flex gap-2 text-[100px] my-10">
@@ -14,4 +14,4 @@ function Timer_1({ hours, minutes, second }) {
   );
 }
 
-export default Timer_1;
+export default TimerOne

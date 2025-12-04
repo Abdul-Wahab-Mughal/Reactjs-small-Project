@@ -36,13 +36,14 @@ export default function Home() {
             ref={homelist}
             className="flex flex-col flex-wrap gap-5 mx-5 sm:flex-row sm:mx-10 pb-5"
           >
-            <Rptext name={"Todo List"} nName={"Todo List"}/>
-            <Rptext name={"Calculator"} nName={"Calculator"}/>
-            <Rptext name={"Clock"} nName={"Clock"}/>
-            <Rptext name={"Timer"} nName={"Timer"}/>
+            <Rptext name={"Todo List"} />
+            <Rptext name={"Calculator"} />
+            <Rptext name={"Clock"} />
+            <Rptext name={"Timer"} />
+            <Rptext name={"RandomColor"} />
+            <Rptext name={"Counter"} />
 
-
-            <Rptext name={"Kit Gaming"} nName={"Kit Gaming"} progress={true}/>
+            <Rptext name={"Kit Gaming"} progress={true} />
           </div>
         </div>
       </div>

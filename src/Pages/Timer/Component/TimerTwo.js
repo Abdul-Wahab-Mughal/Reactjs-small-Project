@@ -1,43 +1,39 @@
 import React, { useEffect } from "react";
-import "./Timer_2.css";
+import "./TimerTwo.css";
 
-function Timer_2({ hours, minutes, second, fs }) {
+function TimerTwo({ hours, minutes, second, fs }) {
   useEffect(() => {
     var timer = JSON.parse(localStorage.getItem("timer"));
 
     // if start one time work
-    if (fs == 0) {
-      var hoursset = document.querySelector(".hours .figure");
-      var ss = hours < 10 ? "0" + hours : hours;
-      hoursset.children[0].innerHTML = ss;
-      hoursset.children[1].children[0].innerHTML = ss;
-      
-      var minset = document.querySelector(".min .figure");
-      var ss = minutes < 10 ? "0" + minutes : minutes;
-      minset.children[0].innerHTML = ss;
-      minset.children[1].children[0].innerHTML = ss;
+    if (fs === 0) {
+      var hours_set = document.querySelector(".hours .figure");
+      var h_s = hours < 10 ? "0" + hours : hours;
+      hours_set.children[0].innerHTML = h_s;
+      hours_set.children[1].children[0].innerHTML = h_s;
+
+      var min_set = document.querySelector(".min .figure");
+      var m_s = minutes < 10 ? "0" + minutes : minutes;
+      min_set.children[0].innerHTML = m_s;
+      min_set.children[1].children[0].innerHTML = m_s;
     }
 
     // hours
     // console.log(timer["hours"], hours);
     if (timer["hours"] !== hours) {
       var hoursset = document.querySelector(".hours .figure");
-      hoursset.children[0].classList.remove("tflip");
-      hoursset.children[2].classList.remove("tflip");
-      hoursset.children[3].classList.remove("tflip");
+      [0, 2, 3].forEach((i) => hoursset.children[i].classList.remove("tflip"));
 
       hoursset.children[2].innerHTML = hours < 10 ? "0" + hours : hours;
       hoursset.children[3].children[0].innerHTML =
         hours < 10 ? "0" + hours : hours;
 
       var hplus = hours + 1;
-      var ss = hplus < 10 ? "0" + hplus : hplus;
-      hoursset.children[0].innerHTML = ss;
-      hoursset.children[1].children[0].innerHTML = ss;
+      var hs = hplus < 10 ? "0" + hplus : hplus;
+      hoursset.children[0].innerHTML = hs;
+      hoursset.children[1].children[0].innerHTML = hs;
       setTimeout(() => {
-        hoursset.children[0].classList.add("tflip");
-        hoursset.children[2].classList.add("tflip");
-        hoursset.children[3].classList.add("tflip");
+        [0, 2, 3].forEach((i) => hoursset.children[i].classList.add("tflip"));
       }, 100);
     }
 
@@ -45,22 +41,18 @@ function Timer_2({ hours, minutes, second, fs }) {
     // console.log(timer["minutes"], minutes);
     if (timer["minutes"] !== minutes) {
       var minset = document.querySelector(".min .figure");
-      minset.children[0].classList.remove("tflip");
-      minset.children[2].classList.remove("tflip");
-      minset.children[3].classList.remove("tflip");
+      [0, 2, 3].forEach((i) => minset.children[i].classList.remove("tflip"));
 
       minset.children[2].innerHTML = minutes < 10 ? "0" + minutes : minutes;
       minset.children[3].children[0].innerHTML =
         minutes < 10 ? "0" + minutes : minutes;
 
       var mplus = minutes + 1;
-      var ss = mplus < 10 ? "0" + mplus : mplus;
-      minset.children[0].innerHTML = ss;
-      minset.children[1].children[0].innerHTML = ss;
+      var ms = mplus < 10 ? "0" + mplus : mplus;
+      minset.children[0].innerHTML = ms;
+      minset.children[1].children[0].innerHTML = ms;
       setTimeout(() => {
-        minset.children[0].classList.add("tflip");
-        minset.children[2].classList.add("tflip");
-        minset.children[3].classList.add("tflip");
+        [0, 2, 3].forEach((i) => minset.children[i].classList.add("tflip"));
       }, 100);
     }
 
@@ -68,9 +60,7 @@ function Timer_2({ hours, minutes, second, fs }) {
     // console.log(timer["second"], second);
     {
       var secset = document.querySelector(".sec .figure");
-      secset.children[0].classList.remove("tflip");
-      secset.children[2].classList.remove("tflip");
-      secset.children[3].classList.remove("tflip");
+      [0, 2, 3].forEach((i) => secset.children[i].classList.remove("tflip"));
 
       secset.children[2].innerHTML = second < 10 ? "0" + second : second;
       secset.children[3].children[0].innerHTML =
@@ -81,9 +71,7 @@ function Timer_2({ hours, minutes, second, fs }) {
       secset.children[0].innerHTML = ss;
       secset.children[1].children[0].innerHTML = ss;
       setTimeout(() => {
-        secset.children[0].classList.add("tflip");
-        secset.children[2].classList.add("tflip");
-        secset.children[3].classList.add("tflip");
+        [0, 2, 3].forEach((i) => secset.children[i].classList.add("tflip"));
       }, 100);
     }
   });
@@ -144,4 +132,4 @@ function Timer_2({ hours, minutes, second, fs }) {
   );
 }
 
-export default Timer_2;
+export default TimerTwo;

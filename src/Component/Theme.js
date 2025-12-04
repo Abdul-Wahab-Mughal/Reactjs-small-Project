@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 
-function Theme() {
+function Theme({ style }) {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "false"
   );
@@ -23,6 +23,7 @@ function Theme() {
       <button
         onClick={handleTheme}
         className="w-16 h-16 border-2 border-black rounded-full dark:border-white dark:text-white"
+        style={style}
       >
         {theme === "true" ? (
           <FontAwesomeIcon icon={faMoon} className="fa-xl" />

@@ -8,6 +8,8 @@ import KitGaming from "./Pages/KitGaming";
 import Calculator from "./Pages/Calculator";
 import Clock from "./Pages/Clock";
 import Timer from "./Pages/Timer";
+import RandomColor from "./Pages/RandomColor";
+import Counter from "./Pages/Counter";
 
 function App() {
   // const navigate = useNavigate();
@@ -20,6 +22,8 @@ function App() {
           <Route path="Calculator" element={<Calculator />} />
           <Route path="Clock" element={<Clock />} />
           <Route path="Timer" element={<Timer />} />
+          <Route path="RandomColor" element={<RandomColor />} />
+          <Route path="Counter" element={<Counter />} />
 
           <Route path="Kit Gaming" element={<KitGaming />} />
         </Routes>

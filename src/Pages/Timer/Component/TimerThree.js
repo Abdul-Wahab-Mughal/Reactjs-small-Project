@@ -1,25 +1,25 @@
 import React, { useEffect } from "react";
-import "./Timer_3.css";
+import "./TimerThree.css";
 
-function Timer_3({ hours, minutes, second }) {
+function TimerThree({ hours, minutes, second }) {
   useEffect(() => {
     // hours
     var t3h = hours.toString().split("");
     if (t3h.length < 2) t3h.unshift("0");
-    var fs = [".first", ".second"];
-    for (let i in fs) {
+    var fsh = [".first", ".second"];
+    for (let i in fsh) {
       document.querySelector(
-        `.hours-group ${fs[i]} .number-grp-wrp`
+        `.hours-group ${fsh[i]} .number-grp-wrp`
       ).style = `transform:translateY(-${t3h[i]}0%)`;
     }
 
     // minutes
     var t3m = minutes.toString().split("");
     if (t3m.length < 2) t3m.unshift("0");
-    var fs = [".first", ".second"];
-    for (let i in fs) {
+    var fsm = [".first", ".second"];
+    for (let i in fsm) {
       document.querySelector(
-        `.minutes-group ${fs[i]} .number-grp-wrp`
+        `.minutes-group ${fsm[i]} .number-grp-wrp`
       ).style = `transform:translateY(-${t3m[i]}0%)`;
     }
 
@@ -257,4 +257,4 @@ function Timer_3({ hours, minutes, second }) {
   );
 }
 
-export default Timer_3;
+export default TimerThree;

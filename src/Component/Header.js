@@ -1,8 +1,11 @@
 import React from "react";
 
-function Header({name}) {
+function Header({ name, style }) {
   return (
-    <header className="todo p-0 m-0 py-5 text-center uppercase font-bold text-5xl dark:text-white">
+    <header
+      style={style}
+      className="todo p-0 m-0 py-5 text-center uppercase font-bold text-5xl dark:text-white"
+    >
       <h1>{name}</h1>
     </header>
   );

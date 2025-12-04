@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Header from "../../Component/Header";
 import Theme from "../../Component/Theme";
 import "./style.css";
-import Timer_1 from "./Component/Timer_1";
-import Timer_2 from "./Component/Timer_2";
-import Timer_3 from "./Component/Timer_3";
+import TimerOne from "./Component/TimerOne";
+import TimerTwo from "./Component/TimerTwo";
+import TimerThree from "./Component/TimerThree";
 
 function Timer() {
   const [isStart, setisStart] = useState(false);
@@ -15,39 +15,41 @@ function Timer() {
   const [timerId, setTimerId] = useState(0);
   const [fs, setfs] = useState(0);
 
+  const runTimer = useCallback(
+    (sec, min, hr, tid) => {
+      if (hr === 0 && min === 0 && sec === 0) {
+        setHours(0);
+        setMinutes(0);
+        setSecond(0);
+        clearInterval(tid);
+      } else if (sec > 0) {
+        setSecond((s) => s - 1);
+      } else if (sec === 0 && min > 0) {
+        setMinutes((m) => m - 1);
+        setSecond(59);
+      } else {
+        setHours((h) => h - 1);
+        setMinutes(59);
+        setSecond(59);
+      }
+
+      var timer = { hours: hours, minutes: minutes, second: second };
+      localStorage.setItem("timer", JSON.stringify(timer));
+    },
+    [hours, minutes, second]
+  );
+
   useEffect(() => {
-    var timer;
-    if (isStart) {
-      timer = setInterval(() => {
-        runTimer(second, minutes, hours, timer);
-        var tfs = fs + 1;
-        setfs(tfs);
-      }, 1000);
-      setTimerId(timer);
-    }
+    if (!isStart) return;
+
+    var timer = setInterval(() => {
+      runTimer(second, minutes, hours, timer);
+      setfs((fs) => fs + 1);
+    }, 1000);
+    setTimerId(timer);
+
     return () => clearInterval(timer);
-  }, [isStart, hours, minutes, second]);
-
-  const runTimer = (sec, min, hr, tid) => {
-    if (hr === 0 && min === 0 && sec === 0) {
-      setHours(0);
-      setMinutes(0);
-      setSecond(0);
-      clearInterval(tid);
-    } else if (sec > 0) {
-      setSecond((s) => s - 1);
-    } else if (sec === 0 && min > 0) {
-      setMinutes((m) => m - 1);
-      setSecond(59);
-    } else {
-      setHours((h) => h - 1);
-      setMinutes(59);
-      setSecond(59);
-    }
-
-    var timer = { hours: hours, minutes: minutes, second: second };
-    localStorage.setItem("timer", JSON.stringify(timer));
-  };
+  }, [isStart, hours, minutes, second, runTimer]);
 
   // console.log(hours, minutes, second);
   const start = () => {
@@ -177,14 +179,14 @@ function Timer() {
                   </button>
                 </div>
                 <div className="flex flex-col items-center gap-5">
-                  <Timer_1 hours={hours} minutes={minutes} second={second} />
-                  <Timer_2
+                  <TimerOne hours={hours} minutes={minutes} second={second} />
+                  <TimerTwo
                     hours={hours}
                     minutes={minutes}
                     second={second}
                     fs={fs}
                   />
-                  <Timer_3 hours={hours} minutes={minutes} second={second} />
+                  <TimerThree hours={hours} minutes={minutes} second={second} />
                 </div>
               </div>
             )}
