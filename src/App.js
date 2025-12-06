@@ -10,6 +10,7 @@ import Clock from "./Pages/Clock";
 import Timer from "./Pages/Timer";
 import RandomColor from "./Pages/RandomColor";
 import Counter from "./Pages/Counter";
+import HoverBox from "./Pages/HoverBox";
 
 function App() {
   // const navigate = useNavigate();
@@ -24,6 +25,7 @@ function App() {
           <Route path="Timer" element={<Timer />} />
           <Route path="RandomColor" element={<RandomColor />} />
           <Route path="Counter" element={<Counter />} />
+          <Route path="Hover Box" element={<HoverBox />} />
 
           <Route path="Kit Gaming" element={<KitGaming />} />
         </Routes>

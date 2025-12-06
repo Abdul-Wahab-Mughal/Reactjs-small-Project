@@ -3,36 +3,20 @@ import "./TimerThree.css";
 
 function TimerThree({ hours, minutes, second }) {
   useEffect(() => {
-    // hours
-    var t3h = hours.toString().split("");
-    if (t3h.length < 2) t3h.unshift("0");
-    var fsh = [".first", ".second"];
-    for (let i in fsh) {
-      document.querySelector(
-        `.hours-group ${fsh[i]} .number-grp-wrp`
-      ).style = `transform:translateY(-${t3h[i]}0%)`;
-    }
-
-    // minutes
-    var t3m = minutes.toString().split("");
-    if (t3m.length < 2) t3m.unshift("0");
-    var fsm = [".first", ".second"];
-    for (let i in fsm) {
-      document.querySelector(
-        `.minutes-group ${fsm[i]} .number-grp-wrp`
-      ).style = `transform:translateY(-${t3m[i]}0%)`;
-    }
-
-    // second
-    var t3s = second.toString().split("");
-    if (t3s.length < 2) t3s.unshift("0");
-    var fs = [".first", ".second"];
-    for (let i in fs) {
-      document.querySelector(
-        `.seconds-group ${fs[i]} .number-grp-wrp`
-      ).style = `transform:translateY(-${t3s[i]}0%)`;
-    }
+    time_3(hours, "hours");
+    time_3(minutes, "minutes");
+    time_3(second, "seconds");
   });
+  const time_3 = (type, group) => {
+    var t = type.toString().split("");
+    if (t.length < 2) t.unshift("0");
+    var f = [".first", ".second"];
+    for (let i in f) {
+      document.querySelector(
+        `.${group}-group ${f[i]} .number-grp-wrp`
+      ).style = `transform:translateY(-${t[i]}0%)`;
+    }
+  };
   return (
     <>
       <div className="timer clock">

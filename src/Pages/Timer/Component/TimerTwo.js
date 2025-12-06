@@ -18,63 +18,30 @@ function TimerTwo({ hours, minutes, second, fs }) {
       min_set.children[1].children[0].innerHTML = m_s;
     }
 
-    // hours
-    // console.log(timer["hours"], hours);
-    if (timer["hours"] !== hours) {
-      var hoursset = document.querySelector(".hours .figure");
-      [0, 2, 3].forEach((i) => hoursset.children[i].classList.remove("tflip"));
-
-      hoursset.children[2].innerHTML = hours < 10 ? "0" + hours : hours;
-      hoursset.children[3].children[0].innerHTML =
-        hours < 10 ? "0" + hours : hours;
-
-      var hplus = hours + 1;
-      var hs = hplus < 10 ? "0" + hplus : hplus;
-      hoursset.children[0].innerHTML = hs;
-      hoursset.children[1].children[0].innerHTML = hs;
-      setTimeout(() => {
-        [0, 2, 3].forEach((i) => hoursset.children[i].classList.add("tflip"));
-      }, 100);
-    }
-
-    //  minutes
-    // console.log(timer["minutes"], minutes);
-    if (timer["minutes"] !== minutes) {
-      var minset = document.querySelector(".min .figure");
-      [0, 2, 3].forEach((i) => minset.children[i].classList.remove("tflip"));
-
-      minset.children[2].innerHTML = minutes < 10 ? "0" + minutes : minutes;
-      minset.children[3].children[0].innerHTML =
-        minutes < 10 ? "0" + minutes : minutes;
-
-      var mplus = minutes + 1;
-      var ms = mplus < 10 ? "0" + mplus : mplus;
-      minset.children[0].innerHTML = ms;
-      minset.children[1].children[0].innerHTML = ms;
-      setTimeout(() => {
-        [0, 2, 3].forEach((i) => minset.children[i].classList.add("tflip"));
-      }, 100);
-    }
-
-    // second
-    // console.log(timer["second"], second);
-    {
-      var secset = document.querySelector(".sec .figure");
-      [0, 2, 3].forEach((i) => secset.children[i].classList.remove("tflip"));
-
-      secset.children[2].innerHTML = second < 10 ? "0" + second : second;
-      secset.children[3].children[0].innerHTML =
-        second < 10 ? "0" + second : second;
-
-      var splus = second + 1;
-      var ss = splus < 10 ? "0" + splus : splus;
-      secset.children[0].innerHTML = ss;
-      secset.children[1].children[0].innerHTML = ss;
-      setTimeout(() => {
-        [0, 2, 3].forEach((i) => secset.children[i].classList.add("tflip"));
-      }, 100);
-    }
+    updateFlip("hours", timer["hours"], hours);
+    updateFlip("min", timer["minutes"], minutes);
+    updateFlip("sec", timer["second"], second);
   });
+
+  function updateFlip(type, oldVal, newVal) {
+    if (oldVal === newVal) return;
+
+    var set = document.querySelector(`.${type} .figure`);
+    [0, 2, 3].forEach((i) => set.children[i].classList.remove("tflip"));
+
+    set.children[2].innerHTML = newVal < 10 ? "0" + newVal : newVal;
+    set.children[3].children[0].innerHTML = newVal < 10 ? "0" + newVal : newVal;
+
+    var plus = newVal + 1;
+    var formatted = plus < 10 ? "0" + plus : plus;
+
+    set.children[0].innerHTML = formatted;
+    set.children[1].children[0].innerHTML = formatted;
+
+    setTimeout(() => {
+      [0, 2, 3].forEach((i) => set.children[i].classList.add("tflip"));
+    }, 100);
+  }
 
   return (
     <>
