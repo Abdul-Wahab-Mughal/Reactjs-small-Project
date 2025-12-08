@@ -36,16 +36,13 @@ export default function Home() {
     scrollRef.current.scrollLeft = pos.current.left - dx;
   };
 
-  // AUTO READ FILTERS FROM HTML
   useEffect(() => {
     if (!homelist.current) return;
 
-    // Get all children inside filter-container
     const filtersArray = Array.from(homelist.current.children)
-      .map((el) => el.className.trim()) // read filter class
-      .filter(Boolean); // remove empty ones
+      .map((el) => el.className.trim()) 
+      .filter(Boolean); 
 
-    // Optional: split multiple classes and get unique ones
     const uniqueFilters = [
       ...new Set(filtersArray.flatMap((f) => f.split(" "))),
     ];
@@ -107,14 +104,14 @@ export default function Home() {
           <div
             ref={scrollRef}
             id="isotope_dis"
-            className="scrollbar_b text-3xl text-white flex flex-row gap-5 px-5 pb-5 border-b-2 overflow-x-scroll"
+            className="scrollbar_b text-3xl text-black dark:text-white flex flex-row gap-5 px-5 pb-5 border-b-2 overflow-x-scroll"
             onMouseDown={startDrag}
             onMouseUp={stopDrag}
             onMouseLeave={stopDrag}
             onMouseMove={onDrag}
           >
             <button
-              className="border-2 px-5 py-2 rounded-xl uppercase font-bold"
+              className="border-2 px-5 py-2 rounded-xl uppercase font-bold shadow-lg shadow-black dark:shadow-white hover:shadow-none hover:translate-y-2 duration-500"
               onClick={() => handleIsotope("*")}
             >
               All
@@ -122,7 +119,7 @@ export default function Home() {
             {filters.map((x, i) => (
               <button
                 key={i}
-                className="border-2 px-5 py-2 rounded-xl uppercase font-bold"
+                className="border-2 px-5 py-2 rounded-xl uppercase font-bold shadow-lg shadow-black dark:shadow-white hover:shadow-none hover:translate-y-2 duration-500"
                 onClick={() => handleIsotope(`${x}`)}
               >
                 {x}
@@ -135,7 +132,7 @@ export default function Home() {
             className=" flex flex-col flex-wrap gap-5 mx-5 sm:flex-row sm:mx-10 pb-5 !h-full"
           >
             <Rptext name={"Todo List"} filter="list" />
-            <Rptext name={"Calculator"} filter="calcuator" />
+            <Rptext name={"Calculator"} filter="number" />
             <Rptext name={"RandomColor"} filter="randomcolor" />
             <Rptext name={"Counter"} filter="number" />
             <Rptext name={"Clock"} filter="number" />

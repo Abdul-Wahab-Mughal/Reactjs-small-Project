@@ -22,7 +22,7 @@ function Theme({ style }) {
     <>
       <button
         onClick={handleTheme}
-        className="w-16 h-16 border-2 border-black rounded-full dark:border-white dark:text-white"
+        className="w-14 h-14 border-2 border-black rounded-full dark:border-white dark:text-white"
         style={style}
       >
         {theme === "true" ? (

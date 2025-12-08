@@ -3,6 +3,10 @@ import Box from "./Component/Box";
 import Header from "../../Component/Header";
 import Theme from "../../Component/Theme";
 import icon_1 from "./Image/icon/np1.svg";
+import icon_2 from "./Image/icon/np2.svg";
+import icon_3 from "./Image/icon/np3.svg";
+import icon_4 from "./Image/icon/np4.svg";
+import icon_5 from "./Image/icon/np5.svg";
 
 function HoverBox() {
   const [active, setActive] = useState(2);
@@ -13,24 +17,24 @@ function HoverBox() {
       icon: icon_1,
     },
     {
-      img: "https://assets-global.website-files.com/635b7fcaa4466902de288cbc/63de368f6bf1b1d29a5e4ea4_Gadventures%20home%20page-2.webp",
+      img: new URL("./Image/img/img2.webp", import.meta.url).href,
       text: "g adventures company logoReduced CPAs just by being able to cater to specific audiences with Dynamic Ads",
-      icon: "https://oliomama.vercel.app/Image/B2B/Ship/np2.svg",
+      icon: icon_2,
     },
     {
-      img: "https://assets-global.website-files.com/635b7fcaa4466902de288cbc/63de1be51693d148ebe68820_gorillas%20home%20page.webp",
+      img: new URL("./Image/img/img3.webp", import.meta.url).href,
       text: "Enabled quick and effective launch and promotion of hundreds of new delivery locations",
-      icon: "https://oliomama.vercel.app/Image/B2B/Ship/np3.svg",
+      icon: icon_3,
     },
     {
-      img: "https://assets-global.website-files.com/635b7fcaa4466902de288cbc/63de1be5442224094ab96a00_Tipico%20home%20page.webp",
+      img: new URL("./Image/img/img4.webp", import.meta.url).href,
       text: "tipico company logoUnlocked performance on social to show live odds in betting, delivering high-quality visuals with real-time relevance",
-      icon: "https://oliomama.vercel.app/Image/B2B/Ship/np4.svg",
+      icon: icon_4,
     },
     {
-      img: "https://assets-global.website-files.com/635b7fcaa4466902de288cbc/63de368f47ab586a768e29ee_Wavemaker%20home%20page-2.webp",
+      img: new URL("./Image/img/img5.webp", import.meta.url).href,
       text: "wavemaker company logoHighly-personalized dynamic creatives led to 50% decrease in CPA",
-      icon: "https://oliomama.vercel.app/Image/B2B/Ship/np5.svg",
+      icon: icon_5,
     },
   ];
 
