@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Theme from "../../Component/Theme";
 
 function RandomColor() {
-  const [colors, setColors] = useState();
+  const [colors, setColors] = useState("#");
   const generator = () => {
     const chars = "0123456789ABCDEF";
     let color = "";

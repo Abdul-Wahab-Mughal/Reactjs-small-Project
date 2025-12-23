@@ -1,7 +1,6 @@
 import React from "react";
 
 function Button({ text, bg, ...props }) {
-  console.log(bg);
   return (
     <>
       <button

@@ -40,8 +40,8 @@ export default function Home() {
     if (!homelist.current) return;
 
     const filtersArray = Array.from(homelist.current.children)
-      .map((el) => el.className.trim()) 
-      .filter(Boolean); 
+      .map((el) => el.className.trim())
+      .filter(Boolean);
 
     const uniqueFilters = [
       ...new Set(filtersArray.flatMap((f) => f.split(" "))),
@@ -96,8 +96,8 @@ export default function Home() {
       `}
       </style>
       <div className="theme">
-        <div className="dark:bg-gray-800 min-h-screen h-full overflow-hidden">
-          <div className="flex flex-col sm:flex-row sm:gap-10 items-center gap-0 mb-5 w-fit m-auto">
+        <div className="flex flex-col dark:bg-gray-800 min-h-screen h-full overflow-hidden">
+          <div className="flex flex-row gap-10 items-center mb-5 w-fit m-auto mt-0">
             <Header name={"React Project"} />
             <Theme />
           </div>
@@ -129,17 +129,19 @@ export default function Home() {
           <div
             ref={homelist}
             id="filter-container"
-            className=" flex flex-col flex-wrap gap-5 mx-5 sm:flex-row sm:mx-10 pb-5 !h-full"
+            className="flex-grow flex flex-col flex-wrap gap-5 px-5 sm:flex-row sm:px-5 pb-5 !h-full overflow-y-auto"
           >
-            <Rptext name={"Todo List"} filter="list" />
+            <Rptext name={"Todo List"} filter="list redux" />
             <Rptext name={"Calculator"} filter="number" />
             <Rptext name={"RandomColor"} filter="randomcolor" />
-            <Rptext name={"Counter"} filter="number" />
+            <Rptext name={"Counter"} filter="number redux" />
             <Rptext name={"Clock"} filter="number" />
             <Rptext name={"Timer"} filter="number" />
             <Rptext name={"Hover Box"} filter="website animation" />
+            <Rptext name={"Quiz App"} filter="redux" progress={true} />
+            <Rptext name={"Movie/TV"} filter="website" progress={true} />
 
-            <Rptext name={"Kit Gaming"} progress={true} filter="website" />
+            <Rptext name={"Kit Gaming"} filter="website" progress={true} />
           </div>
         </div>
       </div>

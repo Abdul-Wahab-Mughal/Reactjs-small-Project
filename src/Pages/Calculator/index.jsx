@@ -4,8 +4,7 @@ import Screen from "./Component/Screen";
 import CalProvider from "./CalContext";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import Header from "../../Component/Header";
-import Theme from "../../Component/Theme";
+import Main from "../../Component/Main";
 
 function Calculator() {
   const btn = [
@@ -35,31 +34,19 @@ function Calculator() {
 
   return (
     <>
-      <div className="theme">
-        <div
-          ref={container}
-          className="w-full h-screen flex flex-col bg-gray-100 dark:bg-gray-800 pb-5"
-        >
-          <div className="flex flex-col sm:flex-row sm:gap-10 items-center gap-0 mb-5 w-fit m-auto">
-            <Header name={"Calculator"} />
-            <Theme />
-          </div>
+      <Main title={"Calculator"} ref={container}>
+        <CalProvider>
+          <section className="allset p-5 border-2 shadow-lg rounded-3xl dark:shadow-white">
+            <Screen key={""} />
 
-          <div className="h-screen flex flex-grow justify-center items-center min min-h-[550px]">
-            <CalProvider>
-              <section className="allset p-5 border-2 shadow-lg rounded-3xl dark:shadow-white">
-                <Screen key={""} />
-
-                <div className="grid grid-cols-4 gap-4">
-                  {btn.flat().map((btn, i) => (
-                    <Button value={btn} keys={i} />
-                  ))}
-                </div>
-              </section>
-            </CalProvider>
-          </div>
-        </div>
-      </div>
+            <div className="grid grid-cols-4 gap-4">
+              {btn.flat().map((btn, i) => (
+                <Button value={btn} keys={i} />
+              ))}
+            </div>
+          </section>
+        </CalProvider>
+      </Main>
     </>
   );
 }

@@ -9,7 +9,7 @@ function Rptext({ name, filter, progress }) {
       <div className={`filter-item ${filter}`}>
         <div className="card w-100 p-2">
           <button
-            className="w-full border-2 border-black bg-gray-200 text-4xl cursor-pointer rounded-3xl p-5 text-nowrap shadow-lg shadow-black dark:shadow-white hover:shadow-none hover:translate-y-2 duration-500 relative uppercase font-bold"
+            className="w-full border-2 border-black bg-gray-200 text-3xl cursor-pointer rounded-3xl p-5 text-nowrap shadow-lg shadow-black dark:shadow-white hover:shadow-none hover:translate-y-2 duration-500 relative uppercase font-bold"
             onClick={() => navigate(`${name}`)}
           >
             {name}

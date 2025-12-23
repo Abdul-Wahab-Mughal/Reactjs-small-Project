@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Header from "../../Component/Header";
-import Theme from "../../Component/Theme";
 import "./style.css";
 import TimerOne from "./Component/TimerOne";
 import TimerTwo from "./Component/TimerTwo";
 import TimerThree from "./Component/TimerThree";
+import Main from "../../Component/Main";
 
 function Timer() {
   const [isStart, setisStart] = useState(false);
@@ -98,101 +97,94 @@ function Timer() {
 
   return (
     <>
-      <div className="theme">
-        <div className="dark:bg-gray-800 min-h-screen h-full overflow-hidden">
-          <div className="flex flex-col sm:flex-row sm:gap-10 items-center gap-0 mb-5 w-fit m-auto">
-            <Header name={"Timer"} />
-            <Theme />
-          </div>
-          {/* Input number */}
-          <div className="min-h-[55em] h-screen flex flex-col gap-3 justify-center items-center overflow-hidden">
-            {!isStart && (
-              <div className="flex flex-col gap-10 items-center">
-                <div className="text-[3em] flex gap-2 border-2 bg-slate-200 rounded-3xl overflow-hidden">
-                  <input
-                    type="text"
-                    id="HH"
-                    onChange={handelInput}
-                    placeholder="HH"
-                    maxLength="2"
-                    className="w-[100px] bg-slate-200 focus:outline-none"
-                  />
-                  <span>:</span>
-                  <input
-                    type="text"
-                    id="MM"
-                    onChange={handelInput}
-                    placeholder="MM"
-                    maxLength="2"
-                    className="w-[100px] bg-slate-200 focus:outline-none"
-                  />
-                  <span>:</span>
-                  <input
-                    type="text"
-                    id="SS"
-                    onChange={handelInput}
-                    placeholder="SS"
-                    maxLength="2"
-                    className="w-[100px] bg-slate-200 focus:outline-none"
-                  />
-                </div>
-                <div className="flex">
-                  <button
-                    className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
-                    onClick={start}
-                  >
-                    Start
-                  </button>
-                </div>
+      <Main title={"Timer"}>
+        <div className=" flex flex-col gap-3 justify-center items-center overflow-hidden">
+          {!isStart && (
+            <div className="flex flex-col gap-10 items-center">
+              <div className="text-[3em] flex gap-2 border-2 bg-slate-200 rounded-3xl overflow-hidden">
+                <input
+                  type="text"
+                  id="HH"
+                  onChange={handelInput}
+                  placeholder="HH"
+                  maxLength="2"
+                  className="w-[100px] bg-slate-200 focus:outline-none"
+                />
+                <span>:</span>
+                <input
+                  type="text"
+                  id="MM"
+                  onChange={handelInput}
+                  placeholder="MM"
+                  maxLength="2"
+                  className="w-[100px] bg-slate-200 focus:outline-none"
+                />
+                <span>:</span>
+                <input
+                  type="text"
+                  id="SS"
+                  onChange={handelInput}
+                  placeholder="SS"
+                  maxLength="2"
+                  className="w-[100px] bg-slate-200 focus:outline-none"
+                />
               </div>
-            )}
-            {isStart && (
-              <div className="flex flex-col gap-5 w-full">
-                <div className="flex gap-5 w-fit m-auto">
-                  <button
-                    className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
-                    onClick={restart}
-                  >
-                    Restart
-                  </button>
-                  {!isPause && (
-                    <button
-                      className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
-                      onClick={pause}
-                    >
-                      Pause
-                    </button>
-                  )}
-                  {isPause && (
-                    <button
-                      className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
-                      onClick={resume}
-                    >
-                      Resume
-                    </button>
-                  )}
-                  <button
-                    className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
-                    onClick={stop}
-                  >
-                    Stop
-                  </button>
-                </div>
-                <div className="flex flex-col items-center gap-5">
-                  <TimerOne hours={hours} minutes={minutes} second={second} />
-                  <TimerTwo
-                    hours={hours}
-                    minutes={minutes}
-                    second={second}
-                    fs={fs}
-                  />
-                  <TimerThree hours={hours} minutes={minutes} second={second} />
-                </div>
+              <div className="flex">
+                <button
+                  className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
+                  onClick={start}
+                >
+                  Start
+                </button>
               </div>
-            )}
-          </div>
+            </div>
+          )}
+          {isStart && (
+            <div className="flex flex-col gap-5 w-full">
+              <div className="flex gap-5 w-fit m-auto">
+                <button
+                  className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
+                  onClick={restart}
+                >
+                  Restart
+                </button>
+                {!isPause && (
+                  <button
+                    className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
+                    onClick={pause}
+                  >
+                    Pause
+                  </button>
+                )}
+                {isPause && (
+                  <button
+                    className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
+                    onClick={resume}
+                  >
+                    Resume
+                  </button>
+                )}
+                <button
+                  className="border-2 border-black text-[2em] uppercase bg-green-500 rounded-3xl py-2 px-5 font-bold"
+                  onClick={stop}
+                >
+                  Stop
+                </button>
+              </div>
+              <div className="flex flex-col items-center gap-5">
+                <TimerOne hours={hours} minutes={minutes} second={second} />
+                <TimerTwo
+                  hours={hours}
+                  minutes={minutes}
+                  second={second}
+                  fs={fs}
+                />
+                <TimerThree hours={hours} minutes={minutes} second={second} />
+              </div>
+            </div>
+          )}
         </div>
-      </div>
+      </Main>
     </>
   );
 }
